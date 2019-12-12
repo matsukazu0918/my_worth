@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyWorth</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar-inverse">
+      <% if user_signed_in? %>
+      <div class="container" style="font-family: HGP行書体;">
+        <div class="header-title"><%= link_to "My worth", root_path, class:"h1", style:"color: white" %></div>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="under-bar"><%= link_to "posts", contents_path, style:"color: white" %></li>
+            <li class="under-bar"><%= link_to "users", users_path, style:"color: white" %></li>
+            <li class="under-bar"><%= link_to "my page", user_path(current_user.id), style:"color: white" %></li>
+            <li class="under-bar"><%= link_to "new post", new_content_path, style:"color: white" %></li>
+            <li class="under-bar"><%= link_to "talk",  chat_rooms_path, style:"color: white" %></li>
+            <li class="under-bar"><%= link_to "logout", destroy_user_session_path, style:"color: white", method: :delete %></li>
+          </ul>
+        </nav>
+      </div>
+      <% end %>
+    </header>
+    <%= yield %>
+    <footer>
+    </footer>
+  </body>
+</html>

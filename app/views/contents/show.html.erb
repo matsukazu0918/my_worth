@@ -1,0 +1,92 @@
+<div class="container content-show">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-4 text-center">
+
+		    <% if flash[:update] %>
+		        <p class="success"><%= flash[:update] %></p>
+		    <% end %>
+
+			<%= attachment_image_tag @content.user, :image, style: "width: 200px; height: 200px;", fallback: "no_image.png" %>
+		</div>
+		<div class="col-md-6">
+			<h1><%= link_to user_path(@content.user) do %><%= @content.user.user_name %><% end %></h1>
+			<p><%= @content.created_at.strftime("%Y-%m-%-d") %></p>
+			<p><%= @content.title %></p>
+
+			<% if @content.user.favorited_by?(@content) %>
+		       <div>
+		        <%= link_to destroy_favorites_path(@content), method: :delete do %>
+		          <i class="glyphicon glyphicon-star" aria-hidden="true" style="color: aqua;"></i>
+		          <%= @content.favorites.count %>
+		        <% end %>
+		      </div>
+            <% else %>
+		      <div>
+		        <%= link_to create_favorites_path(@content), method: :post do %>
+		          <i class="glyphicon glyphicon-star" aria-hidden="true"></i>
+		          <%= @content.favorites.count %>
+		        <% end %>
+		      </div>
+		    <% end %>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 content-body">
+			<p class="well well-lg"><%= @content.body %></p>
+			<div class="text-right">
+				<% if @content.user_id == current_user.id %>
+	            <%= link_to "edit", edit_content_path(@content.id), class:"btn-sm btn-success" %>
+	            <%= link_to "delete", content_path(@content.id), class:"btn-sm btn-danger destroy", method: :delete, "data-confirm" => "本当に削除しますか？？" %>
+	            <% end %>
+	        </div>
+		</div>
+	</div>
+	<div class="row review">
+		<div class="col-md-4 new-review text-center">
+
+			<% if @review.errors.any? %>
+				<div id="error_explanation" class="alert alert-danger">
+					<p><%= @review.errors.count %>errors prohibited this obj from being saved</p>
+				<ul>
+				  <% @review.errors.full_messages.each do |message| %>
+				  <li><%= message %></li>
+				<% end %>
+				</ul>
+				</div>
+			<% end %>
+
+			<%= form_for (@review) do |f| %>
+			<%= f.hidden_field :content_id, value: @content.id %>
+			<div><%= f.text_area :review_body, class:"new-review-body" %></div>
+			<div class="review-create"><%= f.submit 'Create', class:"btn btn-primary" %></div>
+			<% end %>
+		</div>
+		<div class="col-md-8">
+			<h1>Voice</h1>
+
+			<% if flash[:create] %>
+		      <p class="success"><%= flash[:create] %></p>
+		    <% end %>
+
+			<% @reviews.each do |r| %>
+			<ul class="list-group">
+				<li class="list-group-item"><%= r.created_at.strftime("%m-%-d-%-H:%-m") %>
+					　　　　　　　　　　　　　<%= attachment_image_tag r.user, :image, style: "width: 50px; height: 50px;", fallback: "no_image.png" %>
+					    <%= link_to user_path(r.user) do %>
+					<%= r.user.user_name %>
+						<% end %>
+					</li>
+				<li class="list-group-item"><%= r.review_body %></li>
+				<div class="text-right">
+					<% if r.user_id == current_user.id %>
+	                <%= link_to "delete", review_path(r.id), class:"btn-sm btn-danger destroy", method: :delete, "data-confirm" => "本当に削除しますか？？" %>
+	                <% end %>
+		        </div>
+			</ul>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,45 @@
+<div class="sign-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-9 col-md-3 text-left">
+
+        <h2 class="sign">Sign up</h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="field sign">
+            <%= f.label :user_name %><br />
+            <div clss="sign-field" style="color: black;"><%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %></div>
+          </div>
+
+          <div class="field sign">
+            <%= f.label :email %><br />
+            <div clss="sign-field" style="color: black;"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+          </div>
+
+          <div class="field sign">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <div clss="sign-field" style="color: black;"><%= f.password_field :password, autocomplete: "new-password" %></div>
+          </div>
+
+          <div class="field sign">
+            <%= f.label :password_confirmation %><br />
+            <div clss="sign-field" style="color: black;"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+          </div>
+
+          <div class="actions sign">
+            <%= f.submit "Sign up", class:"btn btn-success" %>
+          </div>
+        <% end %>
+
+        <div class="sign">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

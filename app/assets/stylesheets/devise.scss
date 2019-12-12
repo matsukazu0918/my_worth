@@ -1,0 +1,25 @@
+
+.sign-form {
+	background-image: url(yakei2.jpg);
+	background-size: cover;
+	height: 800px;
+}
+
+.sign-form::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.sign {
+	position: relative;
+	z-index: 1;
+	color: white;
+	padding-top: 50px;
+	font-weight: bold;
+}
+

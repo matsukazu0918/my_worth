@@ -1,0 +1,34 @@
+
+
+<div class="content-index container">
+
+	<% if flash[:create] %>
+      <p class="success"><%= flash[:create] %></p>
+    <% end %>
+    <% if flash[:update] %>
+      <p class="success"><%= flash[:update] %></p>
+    <% end %>
+
+	<% @contents.each do |content| %>
+
+	<div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+		<ul class="list-group c-i-list">
+			<li class="user-info list-group-item">
+				<%= attachment_image_tag content.user, :image, style: "width: 100px; height: 100px;", fallback: "no_image.png" %>
+		        <%= content.user.user_name %><br>
+			</li>
+			<li class="date-time text-center list-group-item"><%= content.created_at.strftime("%Y-%m-%-d") %></li>
+			<%= link_to content_path(content) do %>
+            <li class="c-i-title text-center list-group-item"><%= content.title %></li>
+            <% end %>
+        </ul>
+        <i class="glyphicon glyphicon-star" aria-hidden="true" style="color: aqua;"></i>
+              <%= content.favorites.count %>
+    </div>
+
+    <% end %>
+
+    <div style="text-align:center">
+      <%= paginate @contents %>
+    </div>
+</div>
