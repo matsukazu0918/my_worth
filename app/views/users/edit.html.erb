@@ -1,0 +1,39 @@
+<!-- エラーメッセージ -->
+<% if @user.errors.any? %>
+	<div id="error_explanation" class="alert alert-danger">
+		<p><%= @user.errors.count %>errors prohibited this obj from being saved</p>
+	<ul>
+	  <% @user.errors.full_messages.each do |message| %>
+	  <li><%= message %></li>
+	<% end %>
+	</ul>
+	</div>
+<% end %>
+
+<div class="container user-show">
+	<div class="row">
+		<div class="text-center col-md-12">
+			<%= form_for (@user) do |f| %>
+
+            <div class="new">
+				<p class="new-name">user name</p>
+				<%= f.text_field :user_name, class:"n-t-field" %>
+			</div>
+			<div class="new">
+				<p class="new-introduction">introduction</p>
+				<%= f.text_area :introduction, class:"n-b-area" %>
+			</div>
+			<div class="new">
+				<%= f.attachment_field :image, class:"center-block" %>
+			</div>
+			<div class="new">
+				<p class="new-email">email</p>
+				<%= f.text_field :email, class:"n-t-field" %>
+			</div>
+
+			<p class="create"><%= f.submit 'Update', class:"btn btn-primary c-area" %></p>
+
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,2 +1,13 @@
-<h1>ChatRooms#index</h1>
-<p>Find me in app/views/chat_rooms/index.html.erb</p>
+<h1>Index</h1>
+
+<% @chat_rooms.each do |room| %>
+	<% room.chat_room_users.each do |u| %>
+	  <div>
+	  	<% if u.user.id != current_user.id %>
+		    <%= link_to chat_room_path(room) do %>
+		        <%= u.user.user_name %>
+		    <% end %>
+	    <% end %>
+	  </div>
+	<% end %>
+<% end %>

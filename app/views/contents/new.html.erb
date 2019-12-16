@@ -10,18 +10,19 @@
 <% end %>
 
 
+
 <div class="content-new">
 	<div class="container">
 		<div class="row">
 			<div class="text-center col-md-12">
 				<%= form_for (@content) do |f| %>
 
-	            <div class="new-title">
-					<p class="n-t-title">Title</p>
+	            <div class="new">
+					<p class="new-title">Title</p>
 					<%= f.text_field :title, class:"n-t-field" %>
 				</div>
-				<div class="new-body">
-					<p class="n-b-content">Content</p>
+				<div class="new">
+					<p class="new-body">Content</p>
 					<%= f.text_area :body, class:"n-b-area" %>
 				</div>
 

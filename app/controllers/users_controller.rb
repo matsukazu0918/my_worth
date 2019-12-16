@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 
-	PER = 20
+	PER = 24
 
 	def index
 		@users = User.page(params[:page]).per(PER)
 		@user = User.new
 		@q = User.ransack(params[:q])
-        contents = @q.result(distinct: true)
+        users = @q.result(distinct: true)
 	end
 
 	def search
@@ -34,10 +34,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def leave
-		@user = User.find(params[:id])
-	end
-
 	def destroy
 		@user = User.find(params[:id])
         @user.destroy
@@ -47,7 +43,7 @@ class UsersController < ApplicationController
 	private
 
 	def user_params
-		params.require(:enduser).permit(:user_name, :email, :image_id)
+		params.require(:user).permit(:user_name, :email, :image, :introduction)
 	end
 
 	def search_params

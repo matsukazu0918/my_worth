@@ -1,20 +1,17 @@
-
-
 <div class="content-index container">
 
-  <!-- フラッシュ -->
-	<% if flash[:create] %>
-      <p class="success text-center"><%= flash[:create] %></p>
-  <% end %>
-    <!-- 検索 -->
-    <%= search_form_for @q, url: contents_search_path do |f| %>
-      <div class="text-center content-search">
-        <%= f.label :title, "Posts title" %>
-        <%= f.search_field :title_cont %>
 
-        <%= f.submit "検索", class:'btn btn-success btn-sm' %>
-      </div>
-    <% end %>
+  <%= search_form_for @q, url: contents_search_path do |f| %>
+    <div class="text-center content-search">
+      <%= f.label :title, "content title" %>
+      <%= f.search_field :title_cont %>
+
+      <%= f.submit "検索", class:'btn btn-success btn-sm' %>
+    </div>
+  <% end %>
+
+
+  <% if @contents.present? %>
 
 	<% @contents.each do |content| %>
 
@@ -35,7 +32,10 @@
 
     <% end %>
 
-    <div style="text-align:center">
-      <%= paginate @contents %>
-    </div>
+    <% else %>
+
+    <h2 class="text-center">投稿はありません</h2>
+
+    <% end %>
+
 </div>

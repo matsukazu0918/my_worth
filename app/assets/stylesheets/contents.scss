@@ -3,20 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
 .new-title {
-	padding-top: 80px;
-}
-
-.new-body {
-	padding-top: 40px;
-	padding-bottom: 40px;
-}
-
-.n-t-title {
 	font-weight: bold;
 }
 
-.n-b-content {
+.new-body {
 	font-weight: bold;
 }
 
@@ -37,6 +29,10 @@
 	padding-top: 50px;
 }
 
+.content-index {
+	padding-top: 20px;
+}
+
 .content-show {
 	padding-top: 80px;
 }
@@ -49,4 +45,6 @@
 	font-weight: bold;
 	font-size: large;
 }
+
+
 

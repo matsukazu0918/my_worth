@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :leave, :update, :destroy] do
     get 'leave', to: 'users#leave', on: :member
   end
-  get 'search', to: 'users#search'
+  get 'user/search', to: 'users#search', as: 'users_search'
   resources :contents
-  get 'search', to: 'contents#search'
+  get 'content/search', to: 'contents#search', as: 'contents_search'
   resources :reviews, only: [:create, :destroy, :edit, :update]
   post 'favorites/:content_id', to:'favorites#create', as: 'create_favorites'
   delete  'favorites/:content_id', to:'favorites#destroy', as:'destroy_favorites'
   resources :chat_rooms, only: [:index, :create, :show]
+  post 'chat_room/:user_id', to: 'chat_rooms#create', as: 'create_chat_room'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # For details on the DSL available within this filtoe, see http://guides.rubyonrails.org/routing.html
 end

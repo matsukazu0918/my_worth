@@ -1,0 +1,39 @@
+<div class="container user-index">
+	<div class="row">
+
+
+		<%= search_form_for @q, url: users_search_path do |f| %>
+			<div class="text-center">
+				<%= f.label :user_name, "user name" %>
+				<%= f.search_field :user_name_cont %>
+
+				<%= f.submit "検索", class:'btn btn-success btn-sm' %>
+			</div>
+		<% end %>
+
+		<% if @users.present? %>
+
+        <% @users.each do |user| %>
+
+		<div class="col-lg-2">
+			<ul class="list-group text-center u-i-list">
+				<li class="user-info list-group-item">
+					<%= attachment_image_tag user, :image, style: "width: 100px; height: 100px;", fallback: "no_image.png" %>
+				</li>
+				<li class="user-info list-group-item">
+                    <%= link_to user_path(user) do %>
+					    <%= user.user_name %>
+					<% end %>
+				</li>
+			</ul>
+		</div>
+
+		<% end %>
+
+		 <% else %>
+
+	        <h2 class="text-center">userはいません</h2>
+
+	    <% end %>
+	</div>
+</div>

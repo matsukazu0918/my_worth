@@ -1,2 +1,14 @@
-<h1>ChatRooms#show</h1>
-<p>Find me in app/views/chat_rooms/show.html.erb</p>
+<div class="container">
+  <%= link_to "<<back index", chat_rooms_path %>
+  <h1><%= "Chat Room #{@chat_room.id}" %></h1>
+  <h4 class="border"><%= "Your User name: #{current_user&.user_name}" %></h4>
+    <div class="input">
+    <form>
+      <label>message</label>
+      <input type="text" data-behavior="chat_room_speaker">
+    </form>
+  </div>
+  <div id="chat_messages", data-chat_room_id="<%= @chat_room.id %>">
+    <%= render @chat_messages %>
+  </div>
+</div>

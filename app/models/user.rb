@@ -7,11 +7,12 @@ class User < ApplicationRecord
   validates :user_name, presence: true
   validates :email, presence: true
 
-  has_many :contents
-  has_many :favorites
-  has_many :reviews
-  has_many :chat_room_users
-  has_many :chat_messages
+  has_many :contents, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :chat_room_users, dependent: :destroy
+  has_many :chat_rooms, { through: :chat_room_users }
+  has_many :chat_messages, dependent: :destroy
 
   attachment :image
 
