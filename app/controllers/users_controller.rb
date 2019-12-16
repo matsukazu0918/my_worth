@@ -16,6 +16,12 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@heart = Heart.new
+		@hearttimes = current_user.hearts.recent.limit(20)
+		@heartchart = []
+		@hearttimes.each do |h|
+			@heartchart << [h.created_at.strftime("%Y-%m-%d"), h.status]
+		end
 		@contents = @user.contents
 		@favorites = @user.favorites
 	end

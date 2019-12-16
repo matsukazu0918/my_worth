@@ -1,13 +1,29 @@
-<h1>Index</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-offset-2 col-lg-8 text-center">
 
-<% @chat_rooms.each do |room| %>
-	<% room.chat_room_users.each do |u| %>
-	  <div>
-	  	<% if u.user.id != current_user.id %>
-		    <%= link_to chat_room_path(room) do %>
-		        <%= u.user.user_name %>
-		    <% end %>
-	    <% end %>
-	  </div>
-	<% end %>
-<% end %>
+			<h1>Talk</h1>
+
+			<table class="table table-striped">
+			<% @chat_rooms.each do |room| %>
+				<% room.chat_room_users.each do |u| %>
+					<tbody>
+					  <tr>
+					  	<% if u.user.id != current_user.id %>
+					  	<td>
+					  	    <%= attachment_image_tag u.user, :image, style: "width: 50px; height: 50px;", fallback: "no_image.png" %>
+					  	</td>
+					  	<td>
+						    <%= link_to chat_room_path(room) do %>
+						      <%= u.user.user_name %>
+						    <% end %>
+						</td>
+					    <% end %>
+					  </tr>
+					</tbody>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
+

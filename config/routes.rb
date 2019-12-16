@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   delete  'favorites/:content_id', to:'favorites#destroy', as:'destroy_favorites'
   resources :chat_rooms, only: [:index, :create, :show]
   post 'chat_room/:user_id', to: 'chat_rooms#create', as: 'create_chat_room'
+  resources :hearts, only: [:create]
 
   # For details on the DSL available within this filtoe, see http://guides.rubyonrails.org/routing.html
 end

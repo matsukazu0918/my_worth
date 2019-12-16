@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :chat_room_users, dependent: :destroy
   has_many :chat_rooms, { through: :chat_room_users }
   has_many :chat_messages, dependent: :destroy
+  has_many :hearts, dependent: :destroy
 
   attachment :image
 

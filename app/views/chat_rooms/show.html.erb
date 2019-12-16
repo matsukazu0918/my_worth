@@ -1,14 +1,24 @@
 <div class="container">
-  <%= link_to "<<back index", chat_rooms_path %>
-  <h1><%= "Chat Room #{@chat_room.id}" %></h1>
-  <h4 class="border"><%= "Your User name: #{current_user&.user_name}" %></h4>
-    <div class="input">
-    <form>
-      <label>message</label>
-      <input type="text" data-behavior="chat_room_speaker">
-    </form>
-  </div>
-  <div id="chat_messages", data-chat_room_id="<%= @chat_room.id %>">
-    <%= render @chat_messages %>
+  <div class="row">
+    <div class="col-lg-offset-2 col-lg-8">
+      <%= link_to "<<back", chat_rooms_path %>
+
+      <% @chat_room.chat_room_users.each do |room| %>
+        <%if room.user.id != current_user.id %>
+          <h1><%= room.user.user_name %></h1>
+        <% end %>
+      <% end %>
+
+      <h4 class="border"><%= "Your User name: #{current_user&.user_name}" %></h4>
+        <div class="input">
+        <form>
+          <label>message</label>
+          <input type="text" data-behavior="chat_room_speaker">
+        </form>
+      </div>
+      <div id="chat_messages", data-chat_room_id="<%= @chat_room.id %>">
+        <%= render @chat_messages %>
+      </div>
+    </div>
   </div>
 </div>

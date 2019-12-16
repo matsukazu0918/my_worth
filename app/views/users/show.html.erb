@@ -2,6 +2,13 @@
 
 <div class="container user-show">
 	<div class="row">
+        <p>%</p>
+		<%= line_chart @heartchart, min: 0, max: 100, curve: false, width: "100%", height: "400px" %>
+			<%= form_for (@heart) do |f| %>
+			    <div class="heart">今日の心の状態<%= f.number_field :status, min: 0, max: 100 %>％</div>
+			    <%= f.submit 'Create', class:"btn btn-primary" %>
+			<% end %>
+
 		<div class="col-md-4 text-right">
 
           <!-- フラッシュ -->
