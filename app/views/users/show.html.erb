@@ -2,12 +2,26 @@
 
 <div class="container user-show">
 	<div class="row">
+
+		<!-- チャート -->
+		<% if flash[:message] %>
+	        <p class="heart-error"><%= flash[:message] %></p>
+	    <% end %>
+
         <p>%</p>
-		<%= line_chart @heartchart, min: 0, max: 100, curve: false, width: "100%", height: "400px" %>
+        <% if @heartchart.present? %>
+		    <%= line_chart @heartchart, min: 0, max: 100, curve: false, width: "100%", height: "400px" %>
+		<% else %>
+		    <%= line_chart @heartchart, min: 0, max: 100, xmin: 1, xmax: 12, curve: false, width: "100%", height: "400px" %>
+		<% end %>
+		<% if @user.id == current_user.id %>
 			<%= form_for (@heart) do |f| %>
-			    <div class="heart">今日の心の状態<%= f.number_field :status, min: 0, max: 100 %>％</div>
-			    <%= f.submit 'Create', class:"btn btn-primary" %>
+			    <div class="heart text-right">
+			    	今日の心の状態<%= f.number_field :status, min: 0, max: 100 %>％
+			        <%= f.submit 'Create', class:"btn btn-info" %>
+			    </div>
 			<% end %>
+		<% end %>
 
 		<div class="col-md-4 text-right">
 
@@ -16,7 +30,7 @@
 		        <p class="success"><%= flash[:update] %></p>
 		    <% end %>
 
-			<%= attachment_image_tag @user, :image, style: "width: 200px; height: 200px;", fallback: "no_image.png" %>
+			<%= attachment_image_tag @user, :image, class: "img-circle", style: "width: 200px; height: 200px;", fallback: "no_image.png" %>
 		</div>
 		<div class="col-md-6">
 			<h1><%= @user.user_name %></h1>
@@ -36,8 +50,13 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<ul id="user" class="nav nav-pills">
-				<li class="active"><a href="#user-content" data-toggle="tab">Posts</a></li>
-	            <li><a href="#user-favorite" data-toggle="tab">Favorites</a></li>
+				<% if @user.contents.present? %>
+				    <li class="active"><a href="#user-content" data-toggle="tab">Posts</a></li>
+				<% end %>
+
+				<% if @user.favorites.present? %>
+	                <li><a href="#user-favorite" data-toggle="tab">Favorites</a></li>
+	            <% end %>
 	        </ul>
 
 

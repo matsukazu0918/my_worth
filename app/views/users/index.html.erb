@@ -18,13 +18,14 @@
 		<div class="col-lg-2">
 			<ul class="list-group text-center u-i-list">
 				<li class="user-info list-group-item">
-					<%= attachment_image_tag user, :image, style: "width: 100px; height: 100px;", fallback: "no_image.png" %>
+					<%= attachment_image_tag user, :image, class: "img-circle", style: "width: 100px; height: 100px;", fallback: "no_image.png" %>
 				</li>
 				<li class="user-info list-group-item">
                     <%= link_to user_path(user) do %>
 					    <%= user.user_name %>
 					<% end %>
 				</li>
+				<li class="user-info list-group-item" style="color:#FF6699;">心の状態：<%= user.hearts.last.status %>％</li>
 			</ul>
 		</div>
 
