@@ -25,7 +25,7 @@
 		        <%= content.user.user_name %><br>
 			</li>
 			<li class="date-time text-center list-group-item"><%= content.created_at.strftime("%Y-%m-%-d") %></li>
-      <li class="user-info text-center list-group-item" style="color:#FF6699;">心の状態：<%= content.user.hearts.last.status %>％</li>
+      <li class="user-info text-center list-group-item" style="color:#FF6699;">心の状態：<%= content.user.hearts[0].status %>％</li>
 			    <%= link_to content_path(content) do %>
             <li class="c-i-title text-center list-group-item"><%= content.title %></li>
           <% end %>

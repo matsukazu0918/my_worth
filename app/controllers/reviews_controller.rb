@@ -7,17 +7,17 @@ class ReviewsController < ApplicationController
 		@review.user_id = current_user.id
 		if @review.save
 			flash[:create] = "レビューが追加されました"
-			redirect_to content_path(@review.content)
+			render :index
 		else
-			@content = Content.find(@review.content_id)
-			render "contents/show"
+			render :index
 		end
 	end
 
 	def destroy
 		@review = Review.find(params[:id])
+		@reviews = @review.content.reviews
 		@review.destroy
-		redirect_to content_path(@review.content)
+		render :index
 	end
 
 	private

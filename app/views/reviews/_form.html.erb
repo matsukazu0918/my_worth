@@ -1,0 +1,7 @@
+
+
+<%= form_with(model: @review, url: reviews_path) do |f| %>
+	<%= f.hidden_field :content_id, value: @content.id %>
+	<div><%= f.text_area :review_body, class:"new-review-body" %></div>
+	<div class="review-create actions"><%= f.submit 'Create', class:"btn btn-primary" %></div>
+<% end %>

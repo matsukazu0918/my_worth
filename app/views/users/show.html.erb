@@ -39,7 +39,7 @@
 			    <%= link_to "チャット", create_chat_room_path(@user), method: :post, class: "btn btn-info" %>
 			<% end %>
 			<div class="text-right">
-				<% if @user.id == current_user.id %>
+				<% if @user.id == current_user.id || current_user.admin? %>
 	            <%= link_to "ユーザー情報編集", edit_user_path(@user), class:"btn-sm btn-success" %>
 	            <%= link_to "退会", user_path(@user.id), class:"btn-sm btn-danger destroy", method: :delete, "data-confirm" => "本当に退会しますか？？" %>
 	            <% end %>

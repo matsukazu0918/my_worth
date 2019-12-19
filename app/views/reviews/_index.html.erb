@@ -1,0 +1,32 @@
+<% if @review.errors.any? %>
+	<div id="error_explanation" class="alert alert-danger">
+		<p><%= @review.errors.count %>errors prohibited this obj from being saved</p>
+	<ul>
+	  <% @review.errors.full_messages.each do |message| %>
+	  <li><%= message %></li>
+	<% end %>
+	</ul>
+	</div>
+<% end %>
+
+<% if flash[:create] %>
+    <p class="success"><%= flash[:create] %></p>
+<% end %>
+
+
+<% @reviews.each do |r| %>
+<ul class="list-group">
+	<li class="list-group-item"><%= r.created_at.strftime("%m-%-d-%-H:%-m") %>
+		<%= attachment_image_tag r.user, :image, style: "width: 50px; height: 50px;", fallback: "no_image.png" %>
+		    <%= link_to user_path(r.user) do %>
+		<%= r.user.user_name %>
+			<% end %>
+		</li>
+	<li class="list-group-item"><%= r.review_body %></li>
+	<div class="text-right">
+		<% if r.user_id == current_user.id || current_user.admin? %>
+        <%= link_to "delete", review_path(r.id), class:"btn-sm btn-danger destroy", method: :delete, remote: true, "data-confirm" => "本当に削除しますか？？" %>
+        <% end %>
+    </div>
+</ul>
+<% end %>
