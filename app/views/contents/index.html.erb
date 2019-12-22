@@ -25,7 +25,11 @@
 		        <%= content.user.user_name %><br>
 			</li>
 			<li class="date-time text-center list-group-item"><%= content.created_at.strftime("%Y-%m-%-d") %></li>
-      <li class="user-info text-center list-group-item" style="color:#FF6699;">心の状態：<%= content.user.hearts[0].status %>％</li>
+      <% if content.user.hearts[0].present? %>
+          <li class="user-info text-center list-group-item" style="color:#FF6699;">心の状態：<%= content.user.hearts[0].status %>％</li>
+      <% else %>
+          <li class="user-info text-center list-group-item">心の状態：No status</li>
+      <% end %>
 			    <%= link_to content_path(content) do %>
             <li class="c-i-title text-center list-group-item"><%= content.title %></li>
           <% end %>

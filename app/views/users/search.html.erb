@@ -25,7 +25,11 @@
 					    <%= user.user_name %>
 					<% end %>
 				</li>
-				<li class="user-info list-group-item" style="color:#FF6699;">心の状態：<%= user.hearts[0].status %>％</li>
+				<% if user.hearts[0].present? %>
+				    <li class="user-info list-group-item" style="color:#FF6699;">心の状態：<%= user.hearts[0].status %>％</li>
+				<% else %>
+				    <li class="user-info list-group-item">心の状態：No status</li>
+				<% end %>
 			</ul>
 		</div>
 

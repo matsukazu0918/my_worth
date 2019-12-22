@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_080017) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
   end
 
   create_table "reviews", force: :cascade do |t|

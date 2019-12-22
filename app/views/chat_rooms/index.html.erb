@@ -11,7 +11,7 @@
 					  <tr>
 					  	<% if u.user.id != current_user.id %>
 					  	<td>
-					  	    <%= attachment_image_tag u.user, :image, style: "width: 50px; height: 50px;", fallback: "no_image.png" %>
+					  	    <%= attachment_image_tag u.user, :image, class: "img-circle", style: "width: 50px; height: 50px;", fallback: "no_image.png" %>
 					  	</td>
 					  	<td>
 						    <%= link_to chat_room_path(room) do %>

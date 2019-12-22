@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'content/search', to: 'contents#search', as: 'contents_search'
   resources :reviews, only: [:create, :destroy, :edit, :update]
   post 'favorites/:content_id', to:'favorites#create', as: 'create_favorites'
-  delete  'favorites/:content_id', to:'favorites#destroy', as:'destroy_favorites'
+  delete  'contents/:content_id/favorites/:id', to:'favorites#destroy', as:'destroy_favorites'
   resources :chat_rooms, only: [:index, :create, :show]
   post 'chat_room/:user_id', to: 'chat_rooms#create', as: 'create_chat_room'
   resources :hearts, only: [:create]

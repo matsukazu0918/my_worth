@@ -15,10 +15,16 @@
 				<% end %>
 				</h1>
 			<p><%= @content.created_at.strftime("%Y-%m-%-d") %></p>
-			<p style="color:#FF6699;">心の状態：<%= @content.user.hearts[0].status %>％<p>
+
+			<% if @content.user.hearts[0].present? %>
+			    <p style="color:#FF6699;">心の状態：<%= @content.user.hearts[0].status %>％<p>
+            <% else %>
+                <p>心の状態：No stasus<p>
+            <% end %>
+
 			<h3><%= @content.title %></h3>
 
-			<% if @content.user.favorited_by?(@content) %>
+			<% if current_user.favorited_by?(@content) %>
 		       <div>
 		        <%= link_to destroy_favorites_path(@content), method: :delete do %>
 		          <i class="glyphicon glyphicon-star" aria-hidden="true" style="color: aqua;"></i>
