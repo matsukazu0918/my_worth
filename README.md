@@ -11,8 +11,8 @@ My worth
 ・バックエンド<br>
 ruby 2.5.7, rails 5.2.3
 
-・フロントエンド
+・フロントエンド<br>
 bootstrap, javascript
 
-・インフラ
+・インフラ<br>
 EC2(AWS), mysql2
