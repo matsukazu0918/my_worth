@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# name
+My worth
 
-Things you may want to cover:
+# tooling
+このサイトはいろんな人々とコミュニケーションを図る為の投稿用サイトです。基本的な機能は投稿機能、コメント機能、いいね機能、投稿やユーザー名からの検索機能などもあります。
+他にも気に入った人とのチャット機能や自分の気分を記録できるチャート機能などがあります。
 
-* Ruby version
+# requirement
+・バックエンド<br>
+ruby 2.5.7, rails 5.2.3
 
-* System dependencies
+・フロントエンド<br>
+bootstrap, javascript
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+・インフラ<br>
+EC2(AWS), mysql2

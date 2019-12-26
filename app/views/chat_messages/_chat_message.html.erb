@@ -1,3 +1,4 @@
 <div class="messages list-group-item">
-  <p><%= "#{chat_message.user.user_name}: #{ chat_message.message }" %></p>
+  <div class="chat_message"><%= attachment_image_tag chat_message.user, :image, class: "img-circle", style: "width: 50px; height: 50px;", fallback: "no_image.png" %></div>
+  <p class="chat_message"><%= "#{chat_message.user.user_name}: #{ chat_message.message }" %></p>
 </div>
