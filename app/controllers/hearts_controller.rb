@@ -1,7 +1,7 @@
 class HeartsController < ApplicationController
 
 	def create
-		if  current_user.hearts.blank? || current_user.hearts.last.created_at.strftime("%Y-%m-%-d") != Date.today.strftime("%Y-%m-%-d")
+		if  current_user.hearts.blank? || current_user.hearts[0].created_at.strftime("%Y-%m-%-d") != Date.today.strftime("%Y-%m-%-d")
 			@heart = Heart.new(heart_params)
 			@heart.user_id = current_user.id
 			@heart.save
