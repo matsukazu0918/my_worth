@@ -8,4 +8,11 @@ My worth
 他にも気に入った人とのチャット機能や自分の気分を記録できるチャート機能などがあります。
 
 # requirement
-ruby 2.5.7  rails 5.2.3
+・バックエンド
+ruby 2.5.7, rails 5.2.3
+
+・フロントエンド
+bootstrap, javascript
+
+・インフラ
+EC2(AWS), mysql2
