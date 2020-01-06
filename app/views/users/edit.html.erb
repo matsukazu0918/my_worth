@@ -2,11 +2,11 @@
 <% if @user.errors.any? %>
 	<div id="error_explanation" class="alert alert-danger">
 		<p><%= @user.errors.count %>errors prohibited this obj from being saved</p>
-	<ul>
-	  <% @user.errors.full_messages.each do |message| %>
-	  <li><%= message %></li>
-	<% end %>
-	</ul>
+		<ul>
+		  <% @user.errors.full_messages.each do |message| %>
+		    <li><%= message %></li>
+		  <% end %>
+		</ul>
 	</div>
 <% end %>
 

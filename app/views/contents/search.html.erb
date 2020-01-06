@@ -30,17 +30,17 @@
 			    <%= link_to content_path(content) do %>
             <li class="c-i-title text-center list-group-item"><%= content.title %></li>
           <% end %>
-        </ul>
+    </ul>
         <i class="glyphicon glyphicon-star" aria-hidden="true" style="color: aqua;"></i>
               <%= content.favorites.count %>
-    </div>
+  </div>
 
-    <% end %>
+  <% end %>
 
-    <% else %>
+  <% else %>
 
-    <h2 class="text-center">投稿はありません</h2>
+      <h2 class="text-center">投稿はありません</h2>
 
-    <% end %>
+  <% end %>
 
 </div>

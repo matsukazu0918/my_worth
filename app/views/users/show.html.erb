@@ -40,8 +40,8 @@
 			<% end %>
 			<div class="text-right">
 				<% if @user.id == current_user.id || current_user.admin? %>
-	            <%= link_to "ユーザー情報編集", edit_user_path(@user), class:"btn-sm btn-success" %>
-	            <%= link_to "退会", user_path(@user.id), class:"btn-sm btn-danger destroy", method: :delete, "data-confirm" => "本当に退会しますか？？" %>
+		            <%= link_to "ユーザー情報編集", edit_user_path(@user), class:"btn-sm btn-success" %>
+		            <%= link_to "退会", user_path(@user.id), class:"btn-sm btn-danger destroy", method: :delete, "data-confirm" => "本当に退会しますか？？" %>
 	            <% end %>
 	        </div>
 	    </div>
@@ -89,7 +89,7 @@
 							        <%= favorite.content.user.user_name %>
 								<% end %>
 							</li>
-					    <%= link_to content_path(favorite) do %>
+					    <%= link_to content_path(favorite.content) do %>
 				            <li class="list-group-item">
 				            	<%= favorite.content.title %>
 				            	<i class="glyphicon glyphicon-star" aria-hidden="true" style="color: aqua;"></i>
